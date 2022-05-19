@@ -20,7 +20,7 @@ namespace HW_1_and_2
             }
             else
             {
-                Console.Write("Spiral(1) or Reverse(2): ");
+                Console.Write("Snake(1) or Spiral(2): ");
                 switch (Console.ReadLine())
                 {
                     case "1":
