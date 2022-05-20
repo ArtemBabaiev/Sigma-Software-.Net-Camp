@@ -55,6 +55,7 @@ namespace HW_1_and_2
                 throw new Exception("For diagonal fill matrix must be square size");
             }
 
+
             int yCol = 0;
             int xRow = 0;
             int val = 1;
