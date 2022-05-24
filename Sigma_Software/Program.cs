@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sigma_Software.HM_3;
+using System;
 
 namespace Sigma_Software
 {
@@ -6,7 +7,7 @@ namespace Sigma_Software
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Demonstration.DemonstrateHomeWork3();
         }
     }
 }
