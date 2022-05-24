@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Math_Task
+namespace Sigma_Software.HM_2.Task1
 {
-    enum Direction
+    internal enum MeatType
     {
-        RIGHT = -1, DOWN = 1
-        
+        MUTTON, VEAL, PORK, CHICKEN
     }
 }

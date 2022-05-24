@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Shop_Task
+namespace Sigma_Software.HM_2.Task1
 {
     internal class Storage
     {

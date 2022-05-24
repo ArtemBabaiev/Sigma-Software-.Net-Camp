@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shop_Task
+namespace Sigma_Software.HM_2.Task1
 {
     internal class Meat : Product
     {

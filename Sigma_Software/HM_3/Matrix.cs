@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Math_Task
+namespace Sigma_Software.HM_3
 {
     class Matrix
     {
