@@ -46,5 +46,16 @@ namespace Shop_Task
         {
             return base.ToString() + $", expireDate: {expireDate.ToString("yyyy MM dd")}";
         }
+
+        public override bool Equals(object obj)
+        {
+            DiaryProducts diary = (DiaryProducts)obj;
+            return base.Equals(obj) && this.ExpireDate.Equals(diary.ExpireDate);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

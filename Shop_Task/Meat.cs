@@ -55,5 +55,17 @@ namespace Shop_Task
         {
             return base.ToString() + $", type: {type}, category: {category}";
         }
+
+        public override bool Equals(object obj)
+        {
+            Meat meat = (Meat)obj;
+            
+            return base.Equals(obj) && this.Category == meat.Category && this.Type == meat.Type;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

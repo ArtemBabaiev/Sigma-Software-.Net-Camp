@@ -70,6 +70,15 @@ namespace Shop_Task
             Weight = Convert.ToDouble(vs[2]);
         }
 
+        public override bool Equals(object obj)
+        {
+            Product product = (Product)obj;
+            return this.Name == product.Name && this.Price == product.Price && this.Weight == product.Weight;
+        }
 
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }
