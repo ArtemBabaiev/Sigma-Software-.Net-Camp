@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32510.428
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HW_1_and_2", "Sigma_Software\HW_1_and_2.csproj", "{9EE31E83-A20B-40EC-AA0B-AB7D44A118B0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop_Task", "Shop_Task\Shop_Task.csproj", "{118535EC-27C5-46A8-93D1-10FC36B40A67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Math_Task", "Math_Task\Math_Task.csproj", "{FCA64CD7-FB1D-4A6B-89DD-00515EF0B1FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9EE31E83-A20B-40EC-AA0B-AB7D44A118B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9EE31E83-A20B-40EC-AA0B-AB7D44A118B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9EE31E83-A20B-40EC-AA0B-AB7D44A118B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9EE31E83-A20B-40EC-AA0B-AB7D44A118B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{118535EC-27C5-46A8-93D1-10FC36B40A67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{118535EC-27C5-46A8-93D1-10FC36B40A67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{118535EC-27C5-46A8-93D1-10FC36B40A67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{118535EC-27C5-46A8-93D1-10FC36B40A67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCA64CD7-FB1D-4A6B-89DD-00515EF0B1FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCA64CD7-FB1D-4A6B-89DD-00515EF0B1FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCA64CD7-FB1D-4A6B-89DD-00515EF0B1FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCA64CD7-FB1D-4A6B-89DD-00515EF0B1FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
