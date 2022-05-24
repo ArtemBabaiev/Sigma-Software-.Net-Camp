@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Shop
+namespace Shop_Task
 {
     internal class Program
     {
