@@ -14,7 +14,7 @@ namespace Shop_Task
         public List<object> AllProducts 
         { 
             get => allProducts; 
-            set
+            protected set
             {
                 foreach (var item in value)
                 {
@@ -247,13 +247,32 @@ namespace Shop_Task
     
         public object this[int i]
         {
-            get { return AllProducts[i]; }
+            get 
+            {
+                if (i >= 0 && i < allProducts.Count)
+                {
+                    return AllProducts[i];
+                }
+                else
+                {
+                    throw new IndexOutOfRangeException();
+                }
+            }
             set 
             {
-                if (value is Product)
+                if (i >= 0 && i < allProducts.Count)
                 {
-                    AllProducts[i] = value;
+                    if (value is Product)
+                    {
+                        AllProducts[i] = value;
+                    }
                 }
+                else
+                {
+                    throw new IndexOutOfRangeException();
+
+                }
+
             }
         }
     }
