@@ -27,16 +27,16 @@ namespace HW_5
         public void HeapSort(SortOrder sortOrder = SortOrder.ASCENDING)
         {
             int size = arr.Length;
-            CompareInHeap(0, size,  sortOrder);
+            CompareInHeap(0, size, sortOrder);
             while (size > 0)
             {
                 int temp = arr[0];
                 arr[0] = arr[size - 1];
                 arr[size - 1] = temp;
                 size--;
-                CompareInHeap(0, size,  sortOrder);
+                CompareInHeap(0, size, sortOrder);
             }
-            
+
         }
 
         private void CompareInHeap(int head, int heapSize, SortOrder sortOrder)
@@ -53,7 +53,7 @@ namespace HW_5
             if (rightIndex < heapSize)
             {
                 CompareInHeap(rightIndex, heapSize, sortOrder);
-                if (sortOrder==SortOrder.ASCENDING && arr[largestIndex] < arr[rightIndex])
+                if (sortOrder == SortOrder.ASCENDING && arr[largestIndex] < arr[rightIndex])
                 {
                     largestIndex = rightIndex;
                 }
@@ -75,7 +75,7 @@ namespace HW_5
                     largestIndex = leftIndex;
                 }
             }
-            
+
             if (largestIndex != head)
             {
                 //Ставимо найбільший на місце головної ноди
@@ -83,6 +83,78 @@ namespace HW_5
                 arr[head] = arr[largestIndex];
                 arr[largestIndex] = temp;
             }
+        }
+
+        private void Merge(int left, int q, int right)
+        {
+            int i = left;
+            int j = q;
+            StreamWriter writer = File.AppendText(@"data/tempArray.txt");
+            int k = 0; //runs on temp
+            while (i < q && j < right)
+            {
+                if (arr[i] < arr[j])
+                {
+                    writer.WriteLine(arr[i]);
+                    i++;
+                }
+                else
+                {
+                    writer.WriteLine(arr[j]);
+                    j++;
+                }
+                k++;
+            }
+            if (i == q)
+            {
+                for (int m = j; m < right; m++)
+                {
+                    writer.WriteLine(arr[m]);
+                    k++;
+                }
+            }
+            else
+            {
+                while (i < q)
+                {
+                    writer.WriteLine(arr[i]);
+                    i++;
+                    k++;
+                }
+            }
+            writer.Close();
+            StreamReader reader = new StreamReader(@"data/tempArray.txt");
+            for (int n = 0; n < k; n++)
+            {
+                Int32.TryParse(reader.ReadLine(), out arr[n + left]) ;
+            }
+            reader.Close();
+            File.Delete(@"data/tempArray.txt");
+        }
+        
+
+
+        public void SplitMergeSort()
+        {
+            SplitMergeSort(0, arr.Length);
+        }
+
+        private void SplitMergeSort(int start, int end)
+        {
+            if (end - start <= 1)
+            {
+                return;
+            }
+            int middle = (start + end) / 2;
+            SplitMergeSort(start, middle);
+            SplitMergeSort(middle, end);
+            Merge(start, middle, end);
+
+
+
+
+
+
         }
 
         #endregion
@@ -312,7 +384,6 @@ namespace HW_5
 
         #endregion
 
-
         #region made on lesson
         public void RandomInitialization(int a, int b)
         {
@@ -413,7 +484,8 @@ namespace HW_5
             }
         }
 
-        public void Merge(int left, int q, int right)
+        //old merge sort
+        /*public void Merge(int left, int q, int right)
         {
             int i = left;
             int j = q;
@@ -454,44 +526,9 @@ namespace HW_5
             {
                 arr[n + left] = temp[n];
             }
-        }
-
-        public void SplitMergeSort()
-        {
-            SplitMergeSort(0, arr.Length);
-        }
-
-        private void SplitMergeSort(int start, int end)
-        {
-            if (end - start <= 1)
-            {
-                return;
-            }
-            int middle = (start + end) / 2;
-            SplitMergeSort(start, middle);
-            SplitMergeSort(middle, end);
-            Merge(start, middle, end);
-
-
-
-
-
-
-        }
-
-        public void ReadFromFile(String fileName)
-        {
-            StreamReader reader = new StreamReader(fileName);
-            reader.ReadLine();
-            reader.Close();
-        }
+        }*/
 
         #endregion
-
-
-
-
-
 
         public override string ToString()
         {
