@@ -11,28 +11,30 @@ namespace HW_5
     {
         private int[] arr;
 
+        public int[] Arr { get => arr; private set => arr = value; }
+
         #region constructors
         public Vector(int size)
         {
-            arr = new int[size];
+            Arr = new int[size];
         }
 
-        public Vector(int[] arr)
+        public Vector(IEnumerable<int> arr)
         {
-            this.arr = arr;
+            this.Arr = arr.ToArray();
         }
         #endregion
 
         #region hw_5_part
         public void HeapSort(SortOrder sortOrder = SortOrder.ASCENDING)
         {
-            int size = arr.Length;
+            int size = Arr.Length;
             CompareInHeap(0, size, sortOrder);
             while (size > 0)
             {
-                int temp = arr[0];
-                arr[0] = arr[size - 1];
-                arr[size - 1] = temp;
+                int temp = Arr[0];
+                Arr[0] = Arr[size - 1];
+                Arr[size - 1] = temp;
                 size--;
                 CompareInHeap(0, size, sortOrder);
             }
@@ -53,11 +55,11 @@ namespace HW_5
             if (rightIndex < heapSize)
             {
                 CompareInHeap(rightIndex, heapSize, sortOrder);
-                if (sortOrder == SortOrder.ASCENDING && arr[largestIndex] < arr[rightIndex])
+                if (sortOrder == SortOrder.ASCENDING && Arr[largestIndex] < Arr[rightIndex])
                 {
                     largestIndex = rightIndex;
                 }
-                else if (sortOrder == SortOrder.DESCENDING && arr[largestIndex] > arr[rightIndex])
+                else if (sortOrder == SortOrder.DESCENDING && Arr[largestIndex] > Arr[rightIndex])
                 {
                     largestIndex = rightIndex;
                 }
@@ -66,11 +68,11 @@ namespace HW_5
             if (leftIndex < heapSize)
             {
                 CompareInHeap(leftIndex, heapSize, sortOrder);
-                if (sortOrder == SortOrder.ASCENDING && arr[largestIndex] < arr[leftIndex])
+                if (sortOrder == SortOrder.ASCENDING && Arr[largestIndex] < Arr[leftIndex])
                 {
                     largestIndex = leftIndex;
                 }
-                if (sortOrder == SortOrder.DESCENDING && arr[largestIndex] > arr[leftIndex])
+                if (sortOrder == SortOrder.DESCENDING && Arr[largestIndex] > Arr[leftIndex])
                 {
                     largestIndex = leftIndex;
                 }
@@ -79,84 +81,11 @@ namespace HW_5
             if (largestIndex != head)
             {
                 //Ставимо найбільший на місце головної ноди
-                int temp = arr[head];
-                arr[head] = arr[largestIndex];
-                arr[largestIndex] = temp;
+                int temp = Arr[head];
+                Arr[head] = Arr[largestIndex];
+                Arr[largestIndex] = temp;
             }
         }
-
-        private void Merge(int left, int q, int right)
-        {
-            int i = left;
-            int j = q;
-            StreamWriter writer = File.AppendText(@"data/tempArray.txt");
-            int k = 0; //runs on temp
-            while (i < q && j < right)
-            {
-                if (arr[i] < arr[j])
-                {
-                    writer.WriteLine(arr[i]);
-                    i++;
-                }
-                else
-                {
-                    writer.WriteLine(arr[j]);
-                    j++;
-                }
-                k++;
-            }
-            if (i == q)
-            {
-                for (int m = j; m < right; m++)
-                {
-                    writer.WriteLine(arr[m]);
-                    k++;
-                }
-            }
-            else
-            {
-                while (i < q)
-                {
-                    writer.WriteLine(arr[i]);
-                    i++;
-                    k++;
-                }
-            }
-            writer.Close();
-            StreamReader reader = new StreamReader(@"data/tempArray.txt");
-            for (int n = 0; n < k; n++)
-            {
-                Int32.TryParse(reader.ReadLine(), out arr[n + left]) ;
-            }
-            reader.Close();
-            File.Delete(@"data/tempArray.txt");
-        }
-        
-
-
-        public void SplitMergeSort()
-        {
-            SplitMergeSort(0, arr.Length);
-        }
-
-        private void SplitMergeSort(int start, int end)
-        {
-            if (end - start <= 1)
-            {
-                return;
-            }
-            int middle = (start + end) / 2;
-            SplitMergeSort(start, middle);
-            SplitMergeSort(middle, end);
-            Merge(start, middle, end);
-
-
-
-
-
-
-        }
-
         #endregion
 
         #region hw_4_part
@@ -168,17 +97,17 @@ namespace HW_5
          */
         public void QuickSort(Pivot pivot)
         {
-            List<int> arrToSort = new List<int>(arr);
+            List<int> arrToSort = new List<int>(Arr);
             switch (pivot)
             {
                 case Pivot.START:
-                    QuickSortStart(arr, 0, arr.Length - 1);
+                    QuickSortStart(Arr, 0, Arr.Length - 1);
                     break;
                 case Pivot.MIDDLE:
-                    QuickSortMiddle(arr, 0, arr.Length - 1);
+                    QuickSortMiddle(Arr, 0, Arr.Length - 1);
                     break;
                 case Pivot.END:
-                    QuickSortEnd(arr, 0, arr.Length - 1);
+                    QuickSortEnd(Arr, 0, Arr.Length - 1);
                     break;
                 default:
                     break;
@@ -288,11 +217,11 @@ namespace HW_5
         #region hw_3_part
         public bool IsPalindrom()
         {
-            int half = arr.Length / 2;
+            int half = Arr.Length / 2;
 
-            for (int i = 0, j = arr.Length - 1; i < half; i++, j--)
+            for (int i = 0, j = Arr.Length - 1; i < half; i++, j--)
             {
-                if (arr[i] != arr[j])
+                if (Arr[i] != Arr[j])
                 {
                     return false;
                 }
@@ -302,16 +231,16 @@ namespace HW_5
 
         public void StandartReverse()
         {
-            Array.Reverse(arr);
+            Array.Reverse(Arr);
         }
 
         public void MyReverse()
         {
-            for (int i = 0, j = arr.Length - 1; i < arr.Length / 2; i++, j--)
+            for (int i = 0, j = Arr.Length - 1; i < Arr.Length / 2; i++, j--)
             {
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+                int temp = Arr[i];
+                Arr[i] = Arr[j];
+                Arr[j] = temp;
             }
         }
 
@@ -321,13 +250,13 @@ namespace HW_5
 
             int startOfLongestSequence = 0;
             int endOfLongestSequence = 0;
-            for (int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < Arr.Length; i++)
             {
                 int start = i;
                 int end = i + 1;
-                for (int j = i + 1; j < arr.Length; j++)
+                for (int j = i + 1; j < Arr.Length; j++)
                 {
-                    if (arr[i] == arr[j])
+                    if (Arr[i] == Arr[j])
                     {
                         end = j + 1;
                     }
@@ -342,21 +271,21 @@ namespace HW_5
                     endOfLongestSequence = end;
                 }
             }
-            return arr[startOfLongestSequence..endOfLongestSequence];
+            return Arr[startOfLongestSequence..endOfLongestSequence];
         }
 
         public void ShuffleInitialization()
         {
             Random rnd = new Random();
             List<int> lst = new List<int>();
-            for (int i = 1; i <= arr.Length; i++)
+            for (int i = 1; i <= Arr.Length; i++)
             {
                 lst.Add(i);
             }
-            for (int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < Arr.Length; i++)
             {
                 int index = rnd.Next(0, lst.Count);
-                arr[i] = lst[index];
+                Arr[i] = lst[index];
                 lst.RemoveAt(index);
             }
 
@@ -388,30 +317,30 @@ namespace HW_5
         public void RandomInitialization(int a, int b)
         {
             Random rand = new Random();
-            for (int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < Arr.Length; i++)
             {
-                arr[i] = rand.Next(a, b);
+                Arr[i] = rand.Next(a, b);
 
             }
         }
 
         public Pair[] CalculateFrequency()
         {
-            Pair[] pairs = new Pair[arr.Length];
+            Pair[] pairs = new Pair[Arr.Length];
 
-            for (int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < Arr.Length; i++)
             {
                 pairs[i] = new Pair(0, 0);
             }
 
             int countDiff = 0;
 
-            for (int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < Arr.Length; i++)
             {
                 bool isElement = false;
                 for (int j = 0; j < countDiff; j++)
                 {
-                    if (arr[i] == pairs[j].Number)
+                    if (Arr[i] == pairs[j].Number)
                     {
                         pairs[j].Frequency++;
                         isElement = true;
@@ -420,7 +349,7 @@ namespace HW_5
                 }
                 if (!isElement)
                 {
-                    pairs[countDiff].Number = arr[i];
+                    pairs[countDiff].Number = Arr[i];
                     pairs[countDiff].Frequency++;
                     countDiff++;
                 }
@@ -436,30 +365,30 @@ namespace HW_5
 
         public void CountingSort()
         {
-            int max = arr[0];
-            int min = arr[0];
-            for (int i = 0; i < arr.Length; i++)
+            int max = Arr[0];
+            int min = Arr[0];
+            for (int i = 0; i < Arr.Length; i++)
             {
-                if (arr[i] > max)
+                if (Arr[i] > max)
                 {
-                    max = arr[i];
+                    max = Arr[i];
                 }
-                if (arr[i] < min)
+                if (Arr[i] < min)
                 {
-                    min = arr[i];
+                    min = Arr[i];
                 }
             }
             int[] temp = new int[max - min + 1];
-            for (int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < Arr.Length; i++)
             {
-                temp[arr[i] - min]++;
+                temp[Arr[i] - min]++;
             }
             int k = 0;
             for (int i = 0; i < temp.Length; i++)
             {
                 for (int j = 0; j < temp[i]; j++)
                 {
-                    arr[k] = i + min;
+                    Arr[k] = i + min;
                     k++;
                 }
             }
@@ -469,9 +398,9 @@ namespace HW_5
         {
             get
             {
-                if (index >= 0 && index < arr.Length)
+                if (index >= 0 && index < Arr.Length)
                 {
-                    return arr[index];
+                    return Arr[index];
                 }
                 else
                 {
@@ -480,12 +409,34 @@ namespace HW_5
             }
             set
             {
-                arr[index] = value;
+                Arr[index] = value;
             }
         }
 
-        //old merge sort
-        /*public void Merge(int left, int q, int right)
+        public void SplitMergeSort()
+        {
+            SplitMergeSort(0, Arr.Length);
+        }
+
+        private void SplitMergeSort(int start, int end)
+        {
+            if (end - start <= 1)
+            {
+                return;
+            }
+            int middle = (start + end) / 2;
+            SplitMergeSort(start, middle);
+            SplitMergeSort(middle, end);
+            Merge(start, middle, end);
+
+
+
+
+
+
+        }
+
+        public void Merge(int left, int q, int right)
         {
             int i = left;
             int j = q;
@@ -493,14 +444,14 @@ namespace HW_5
             int k = 0; //runs on temp
             while (i < q && j < right)
             {
-                if (arr[i] < arr[j])
+                if (Arr[i] < Arr[j])
                 {
-                    temp[k] = arr[i];
+                    temp[k] = Arr[i];
                     i++;
                 }
                 else
                 {
-                    temp[k] = arr[j];
+                    temp[k] = Arr[j];
                     j++;
                 }
                 k++;
@@ -509,7 +460,7 @@ namespace HW_5
             {
                 for (int m = j; m < right; m++)
                 {
-                    temp[k] = arr[m];
+                    temp[k] = Arr[m];
                     k++;
                 }
             }
@@ -517,26 +468,28 @@ namespace HW_5
             {
                 while (i < q)
                 {
-                    temp[k] = arr[i];
+                    temp[k] = Arr[i];
                     i++;
                     k++;
                 }
             }
             for (int n = 0; n < temp.Length; n++)
             {
-                arr[n + left] = temp[n];
+                Arr[n + left] = temp[n];
             }
-        }*/
+        }
+
+
 
         #endregion
 
         public override string ToString()
         {
             string result = "";
-            for (int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < Arr.Length; i++)
             {
-                result += arr[i];
-                if (i < arr.Length - 1)
+                result += Arr[i];
+                if (i < Arr.Length - 1)
                 {
                     result += ", ";
                 }
