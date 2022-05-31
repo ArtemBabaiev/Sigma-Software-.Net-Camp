@@ -9,6 +9,9 @@
     <None Update="data\ArrayData.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="data\result.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="data\tempHalf1.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
