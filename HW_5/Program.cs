@@ -21,7 +21,7 @@ namespace HW_5
             v1.SplitMergeSort();
             Console.WriteLine(v1);
             Console.WriteLine("*******************************************************************************");
-
+            VectorFile.SortFile(@"data/ArrayData.txt");
         }
     }
 }
