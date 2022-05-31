@@ -22,11 +22,6 @@ namespace HW_5
             }
         }
 
-        private static void MergeIntoFile(string path)
-        {
-
-        }
-
         public static int GetNumberOfElements(string path)
         {
             int result = 0;
