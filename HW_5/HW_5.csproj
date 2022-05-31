@@ -6,7 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="data\tempArray.txt">
+    <None Update="data\ArrayData.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\tempHalf1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\tempHalf2.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
