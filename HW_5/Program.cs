@@ -11,16 +11,16 @@ namespace HW_5
             vector.RandomInitialization(-10, 30);
             vector.HeapSort(SortOrder.DESCENDING);
             Console.WriteLine(vector);
+            Console.WriteLine("*******************************************************************************");
             vector.HeapSort(SortOrder.ASCENDING);
             Console.WriteLine(vector);
-
+            Console.WriteLine("*******************************************************************************");
             Random rand = new Random();
-            string[] randNumbers = new string[100];
-            for (int i = 0; i < 100; i++)
-            {
-                randNumbers[i] = rand.Next(-50, 50).ToString();
-            }
-            File.AppendAllLines(@"data/ArrayData.txt", randNumbers);
+            Vector v1 = new(50);
+            v1.RandomInitialization(0, 60);
+            v1.SplitMergeSort();
+            Console.WriteLine(v1);
+            Console.WriteLine("*******************************************************************************");
 
         }
     }
