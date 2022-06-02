@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,22 +13,25 @@ namespace HW_3
         private int rows;
         private int columns;
 
+        public int Rows { get => rows;protected set => rows = value; }
+        public int Columns { get => columns; protected set => columns = value; }
+
         public Matrix(int rows, int columns)
         {
             matrix = new int[rows, columns];
-            this.rows = rows;
-            this.columns = columns;
+            this.Rows = rows;
+            this.Columns = columns;
         }
 
         public void ReverseFill()
         {
             int k = 0;
             int val = 1;
-            while (k < columns)
+            while (k < Columns)
             {
-                for (int i = 0; i < rows; i++)
+                for (int i = 0; i < Rows; i++)
                 {
-                    if (k<columns)
+                    if (k<Columns)
                     {
                         matrix[i, k] = val;
                         val++;
@@ -35,9 +39,9 @@ namespace HW_3
                     
                 }
                 k++;
-                for (int i = rows - 1; i >= 0; i--)
+                for (int i = Rows - 1; i >= 0; i--)
                 {
-                    if (k < columns)
+                    if (k < Columns)
                     {
                         matrix[i, k] = val;
                         val++;
@@ -52,7 +56,7 @@ namespace HW_3
 
         public void DiagonalFill(Direction dir)
         {
-            if (rows != columns)
+            if (Rows != Columns)
             {
                 throw new Exception("For diagonal fill matrix must be square size");
             }
@@ -62,7 +66,7 @@ namespace HW_3
             int xRow = 0;
             int val = 1;
             int diagonalNumber = 0;
-            int size = rows - 1;
+            int size = Rows - 1;
 
             //upperHalf and mainDiagonal
             for (int i = 0; i <= size; i++)
@@ -121,8 +125,8 @@ namespace HW_3
                     if (dir == Direction.DOWN)
                     {
                         xRow = i;
-                        yCol = columns - 1;
-                        for (; xRow <= rows - 1;)
+                        yCol = Columns - 1;
+                        for (; xRow <= Rows - 1;)
                         {
                             matrix[xRow, yCol] = val;
                             val++;
@@ -134,9 +138,9 @@ namespace HW_3
 
                     else
                     {
-                        xRow = rows - 1;
+                        xRow = Rows - 1;
                         yCol = i;
-                        for (; yCol <= columns - 1;)
+                        for (; yCol <= Columns - 1;)
                         {
                             matrix[xRow, yCol] = val;
                             val++;
@@ -152,9 +156,9 @@ namespace HW_3
                 {
                     if (dir == Direction.DOWN)
                     {
-                        xRow = rows - 1;
+                        xRow = Rows - 1;
                         yCol = i;
-                        for (; yCol <= columns - 1;)
+                        for (; yCol <= Columns - 1;)
                         {
                             matrix[xRow, yCol] = val;
                             val++;
@@ -166,8 +170,8 @@ namespace HW_3
                     else
                     {
                         xRow = i;
-                        yCol = columns - 1;
-                        for (; xRow <= rows - 1;)
+                        yCol = Columns - 1;
+                        for (; xRow <= Rows - 1;)
                         {
                             matrix[xRow, yCol] = val;
                             val++;
@@ -189,8 +193,8 @@ namespace HW_3
             int val = 1;
             int startRow = 0;
             int startColumn = 0;
-            int finishColumn = columns;
-            int finishRow = rows;
+            int finishColumn = Columns;
+            int finishRow = Rows;
 
             while (startRow < finishRow && startColumn < finishColumn)
             {
@@ -234,13 +238,33 @@ namespace HW_3
 
         public void PrintMatrix()
         {
-            for (int i = 0; i < rows; i++)
+            for (int i = 0; i < Rows; i++)
             {
-                for (int j = 0; j < columns; j++)
+                for (int j = 0; j < Columns; j++)
                 {
                     Console.Write(matrix[i, j] + "\t");
                 }
                 Console.WriteLine();
+            }
+        }
+
+        public void ReadMatrixFromFile(string path)
+        {
+            using (StreamReader reader = new StreamReader(path))
+            {
+                string line = reader.ReadLine();
+                string[] sizes = line.Split(" ");
+                this.Rows = int.Parse(sizes[0]);
+                this.Columns = int.Parse(sizes[1]);
+                matrix = new int[Rows, Columns];
+                for (int i = 0; i < Rows; i++)
+                {
+                    string[] items = reader.ReadLine().Split(" ");
+                    for (int j = 0; j < Columns; j++)
+                    {
+                        matrix[i, j] = int.Parse(items[j]);
+                    }
+                }
             }
         }
     }
