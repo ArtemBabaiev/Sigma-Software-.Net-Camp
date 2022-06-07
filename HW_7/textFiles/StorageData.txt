@@ -1,0 +1,10 @@
+﻿meat mt 15,5 15,5 chicken high
+diary_Product dr 16,6 16,6 22/12/2022
+diary_Product dr 16,6 16,6 22/12/2022
+diary_Product 16,6 16,6 22/12/2022
+product pr 17,7 17,7
+product pr1 17.7 17,7
+product pr2 17,7 17,7
+product pr3 17,7 17.7
+product pr4 17,7 17,7
+product pr5 17,7 1727
