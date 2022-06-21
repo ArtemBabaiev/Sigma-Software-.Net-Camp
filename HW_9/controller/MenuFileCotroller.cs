@@ -13,6 +13,7 @@ namespace HW_9.controller
     class MenuFileCotroller
     {
         string prevProblemIngr = "";
+
         public Menu LoadMenu()
         {
             try
@@ -46,6 +47,7 @@ namespace HW_9.controller
                 Console.ReadLine();
             }
         }
+
         private void IncorrectPriceHandler(string name)
         {
             if (prevProblemIngr != name)
@@ -56,38 +58,15 @@ namespace HW_9.controller
             }
         }
         
-        public void WritePrice( Menu menu)
+        public void WriteReport(Menu menu, KeyValuePair<string, double> currency) 
         {
-            Currencies cur = Currencies.UAH;
-            do
+            string report = menu.FormReport(currency);
+            using (StreamWriter writer = File.CreateText(@"txtData\result.txt"))
             {
-                Console.Write("Choose currency (EUR/USD): ");
-                string temp = Console.ReadLine().ToUpper();
-                if (Enum.GetNames(typeof(Currencies)).Contains(temp))
-                {
-                    cur = (Currencies)Enum.Parse(typeof(Currencies), temp);
-                    break;
-                }
-            } while (true);
-
-            using (StreamWriter writer = File.CreateText(@"txtData/result.txt"))
-            {
-                double priceToWrite = menu.GetPriceOfRequiredIngridients();
-                double course = 1;
-                using (StreamReader reader = new StreamReader(@"txtData/Course.txt"))
-                {
-                    while (!reader.EndOfStream)
-                    {
-                        string line = reader.ReadLine();
-                        if (line.Contains(cur.ToString()))
-                        {
-                            course = double.Parse(line.Split(" - ")[1]);
-                        }
-                    }
-                }
-                writer.Write($"Cost of required ingredients\nCost - {Math.Round(priceToWrite * course, 2)} {cur.ToString()}");
+                writer.Write(report);
             }
         }
+
 
 
     }

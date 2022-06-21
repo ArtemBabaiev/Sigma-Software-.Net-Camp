@@ -13,19 +13,19 @@ namespace HW_9
         {
             Console.InputEncoding = System.Text.Encoding.Unicode;
             Console.OutputEncoding = System.Text.Encoding.Unicode;
+            Menu menu;
             try
             {
                 MenuFileCotroller controller = new();
-                Menu menu = controller.LoadMenu();
+                menu = controller.LoadMenu();
                 Console.WriteLine(menu);
-                controller.WritePrice(menu);
+                DialogContoller.WriteReportDialog(menu);
+
             }
             catch (Exception e)
             {
-
                 Console.WriteLine(e.Message);
             }
-            Console.WriteLine();
         }
     }
 }

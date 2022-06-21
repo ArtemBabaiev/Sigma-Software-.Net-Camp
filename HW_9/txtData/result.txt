@@ -1,2 +1,5 @@
-Cost of required ingredients
-Cost - 546.19 EUR
+Total price: 913.92 EUR
+Ingridient: м'ясо, Required: 12 gramms
+Ingridient: сир, Required: 114.9 gramms
+Ingridient: булочка, Required: 10 gramms
+Ingridient: сосиска, Required: 20 gramms

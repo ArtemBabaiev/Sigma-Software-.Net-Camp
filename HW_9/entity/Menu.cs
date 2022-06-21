@@ -39,6 +39,7 @@ namespace HW_9.entity
         {
             Dishes.Add(dish);
         }
+
         public double GetPriceOfRequiredIngridients()
         {
             double result = 0;
@@ -50,6 +51,39 @@ namespace HW_9.entity
                 }
             }
             return result;
+        }
+
+        public string FormReport(KeyValuePair<string, double> currency)
+        {
+            string report = $"Total price: {Math.Round(GetPriceOfRequiredIngridients() * currency.Value, 2)} {currency.Key}\n";
+            Dictionary<Ingredient, double> required = GetIngredietsAndMasses();
+
+            foreach (var item in required)
+            {
+                report += $"Ingridient: {item.Key.Name}, Required: {item.Value} gramms\n";
+            }
+            
+            return report;
+
+        }
+        public Dictionary<Ingredient, double> GetIngredietsAndMasses()
+        {
+            Dictionary<Ingredient, double> dict = new();
+            foreach (var dish in dishes)
+            {
+                foreach (var item in dish.MassOfIngridients)
+                {
+                    if (!dict.ContainsKey(item.Key))
+                    {
+                        dict.Add(item.Key, item.Value);
+                    }
+                    else
+                    {
+                        dict[item.Key] += item.Value;
+                    }
+                }
+            }
+            return dict;
         }
         #endregion
 
