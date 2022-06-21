@@ -10,21 +10,16 @@ namespace HW_9.controller
 {
     class DialogContoller
     {
-        static public void LoadMenuDialog()
-        {
 
-        }
-
-        static public void WriteReportDialog(Menu menu)
+        static public KeyValuePair<string, double> ChooseCurrencyDialog()
         {
             MenuFileCotroller cotroller = new();
             CurrencyCollection curList = CurrencyService.ReadCurrency();
 
             Console.Write("Choose currency (EUR/USD): ");
             string temp = Console.ReadLine().ToUpper();
-            KeyValuePair<string, double> currency = curList.GetCurrencyData(temp);
+            return  curList.GetCurrencyData(temp);
 
-            cotroller.WriteReport(menu, currency);
 
         }
     }

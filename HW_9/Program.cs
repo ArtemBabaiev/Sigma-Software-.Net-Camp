@@ -19,7 +19,8 @@ namespace HW_9
                 MenuFileCotroller controller = new();
                 menu = controller.LoadMenu();
                 Console.WriteLine(menu);
-                DialogContoller.WriteReportDialog(menu);
+                KeyValuePair<string, double> currency = DialogContoller.ChooseCurrencyDialog();
+                controller.WriteReport(menu, currency);
 
             }
             catch (Exception e)
