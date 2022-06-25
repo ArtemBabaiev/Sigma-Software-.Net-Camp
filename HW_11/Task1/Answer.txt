@@ -1,0 +1,28 @@
+﻿Клас Storage
+До класу Storage додано статичний метод CreateStorage(), який приймає List<string> і повертає новий Storage
+Імплементується інтерфейс IStorage(про це далі) для керуванням складу.
+
+
+Класи: Product, Meat(:Product), Diary(:Product).
+Ці класи мають лише відповідні атрибути, властивості, конструктори та override методів класу object.
+До класу Product додано статичний метод CreateProduct(), який приймає string і повертає Product, дочірні класи можуть зробити override даного метода
+До класу Product додано поле id, до нього мають доступ усі дочірні класи.(То об'єкт Storage не може мати продуктів з однаковими id, то можна використати event)
+
+
+Інтерфейс IStorage
+Має настпуні сигнатури методів
+GetAllProducts(), GetProductById(string id), GetProductsByType(Type type),
+AddProduct(Product product), AddProducts(IEnumerable products),
+RemoveProductById(), RemoveExpired()
+
+
+Для заповнення storage є два статичних класи + клас валідації
+1) CLIStorageHandler - основна задача це отримання та валідація даних за допомогою StorageDataValidation та повернення складу у вигляді List<string> (окрема стрічка це продукт)
+2) FileStorageHandler - зчитує файл, валідує дані та повертає List<string>
+3) StorageDataValidation - має методи для валідації даних (використовується у CLIStorageHandler та FileStorageHandler)
+
+Для діалогу з користувачем DialogHandler, який працює за принципом вибором доступних опцій: 
+заповнити з файлу(викликає FileStorageHandler), 
+заповнити у режимі діалогу(викликає CLIStorageHandler),
+також опції можливі за допомогою IStorage
+
