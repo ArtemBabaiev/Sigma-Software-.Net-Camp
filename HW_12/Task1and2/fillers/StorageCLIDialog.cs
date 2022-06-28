@@ -8,6 +8,6 @@ namespace HW_12.Task1.fillers
 {
     class StorageCLIDialog
     {
-        //реалізація пізніше
+        //нова реалізація пізніше
     }
 }
