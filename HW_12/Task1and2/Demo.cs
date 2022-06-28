@@ -21,7 +21,7 @@ namespace HW_12.Task1
 
             Console.WriteLine("".PadLeft(25, '*'));
             //Пошук за певною ознакою
-            foreach (var item in storage.FindBy(prod => prod.Price > 17))
+            foreach (var item in storage.FindBy(prod => prod is Meat meat && meat.Price == 15.5))
             {
                 Console.WriteLine(item);
             }

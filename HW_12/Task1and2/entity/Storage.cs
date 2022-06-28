@@ -17,8 +17,8 @@ namespace HW_12.Task1.entity
         List<Product> allProducts;
 
         #region HW 12 part TASK1 and TASK2
-        //Присвоєння делегату демонструється у класі Task1.Demo
         //Task1
+        //Присвоєння делегату демонструється у класі Task1.Demo
         public delegate void ExpiredHandler(Storage sender, ExpiredEventArgs e);
         public event ExpiredHandler OnAddingExpired;
 
@@ -42,6 +42,9 @@ namespace HW_12.Task1.entity
         }
 
         //Task2
+        //Використання у класі Task1.Demo
+        //можливий лямбда
+        //prod => prod is Meat meat && meat.Price == 15.5
         public IEnumerable<Product> FindBy(Func<Product, bool> func)
         {
             return allProducts.Where(func);
