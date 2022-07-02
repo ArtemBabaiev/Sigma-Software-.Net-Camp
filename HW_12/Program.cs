@@ -9,7 +9,8 @@ namespace HW_12
     {
         static void Main(string[] args)
         {
-            Task1.Demo.Start();
+            //Task1.Demo.Start();
+            Task3.Demo.Start();
         }
     }
 }
