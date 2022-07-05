@@ -86,5 +86,6 @@ namespace HW_12.Task1.entity
             return base.ToString()[..^1] + $", {nameof(ExpireDate)}={ExpireDate.ToString("dd.MM.yyyy")}}}";
         }
         #endregion
+
     }
 }
