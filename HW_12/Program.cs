@@ -10,6 +10,7 @@ namespace HW_12
         static void Main(string[] args)
         {
             Task1.Demo.Start();
+            Console.WriteLine("*".PadLeft(25, '*') + "\n");
             Task3.Demo.Start();
         }
     }
