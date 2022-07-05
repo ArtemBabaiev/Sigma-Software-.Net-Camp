@@ -9,8 +9,8 @@ namespace HW_12.Task3
 {
     static class ExpressionTranlator
     {
-        //працює за умови що всі елементи розділені пробілом
-        //наприклад 2 / sin ( 1 - 5 ) ^ 2"
+        //працює за умови що всі елементи розділені пробілом, але унарні операції прикріплені до числа
+        //наприклад: -2 / sin ( 1 - 5 ) ^ 2"
         public static string PolishFormOf(string expression)
         {
 
