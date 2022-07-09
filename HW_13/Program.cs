@@ -22,7 +22,10 @@ namespace HW_13
                 new entities.CashRegister(2, new(0,2)),
             });
 
-            Console.WriteLine(station.StartWork().ToString());
+            using (StreamWriter writer = File.CreateText(@"txtData/result.txt"))
+            {
+                writer.WriteLine(station.StartWork().ToString());
+            }
 
 
             /*PriorityQueue<string, int> queue = new();
@@ -31,7 +34,6 @@ namespace HW_13
             queue.Enqueue("name3", 0);
             queue.Enqueue("name4", 0);*//*
             Console.WriteLine(queue.Peek());*/
-            Console.WriteLine(bool.Parse("false"));
 
         }
     }
